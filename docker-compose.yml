@@ -2,15 +2,11 @@ version: '3.5'
 
 services:
   apps:
-    image: apps
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: expr_llm:eval
     ports:
-      - "3000:3000"
+      - "8001:8001"
+    runtime: nvidia
+    command: sleep infinity  # to make container not exit
     volumes:
-      - .:/app
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgres://postgres:password@db:5432/db
+      - .apps:/expr/apps
+      - .scripts:/expr/scripts

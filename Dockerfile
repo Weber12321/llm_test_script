@@ -1,3 +1,12 @@
+# syntax=docker/dockerfile:1
+
+# preparation for building image:
+
+# $ eval $(ssh-agent)
+# $ ssh-add ~/.ssh/name_of_key
+# $ # (may need to input passphrase)
+
+# ref: https://docs.docker.com/develop/develop-images/build_enhancements/#using-ssh-to-access-private-data-in-builds
 
 # $ DOCKER_BUILDKIT=1 docker build -t expr_llm:eval .
 
@@ -23,7 +32,7 @@ RUN apt-get update \
 COPY ./requirements ./requirements
 
 RUN --mount=type=ssh python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir Cython==3.0.0 \
+    # && python3 -m pip install --no-cache-dir Cython==3.0.0 \
     && pip install --no-cache-dir -r ./requirements/base
 
 RUN adduser --disabled-password systalkai
