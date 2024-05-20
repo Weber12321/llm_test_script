@@ -45,10 +45,15 @@ COPY ./apps /expr/apps
 
 RUN chown -R systalkai:systalkai /expr
 
+USER systalkai
+
 WORKDIR /expr/apps
 
 COPY ./scripts /expr/scripts
 
 WORKDIR /expr/apps
 
-USER systalkai
+RUN mkdir -p /.cache
+
+RUN mkdir -p /expr/apps/.cache
+

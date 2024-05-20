@@ -8,5 +8,5 @@ services:
     runtime: nvidia
     command: sleep infinity  # to make container not exit
     volumes:
-      - .apps:/expr/apps
-      - .scripts:/expr/scripts
+      - ./apps:/expr/apps
+      - ./scripts:/expr/scripts
