@@ -10,3 +10,19 @@ services:
     volumes:
       - ./apps:/expr/apps
       - ./scripts:/expr/scripts
+      - ./apps/storage:/expr/apps/storage
+    env_file:
+      - docker-vars.env
+
+  # tgi:
+  #   image: ghcr.io/huggingface/text-generation-inference
+  #   ports:
+  #     - "8020:80"
+  #   runtime: nvidia
+  #   volumes:
+  #     - /volume/saved_model:/data
+  #   environment:
+  #     - "max-input-length=4000"
+  #     - "max-total-tokens=4096"
+  #   env_file:
+  #     - docker-vars.env

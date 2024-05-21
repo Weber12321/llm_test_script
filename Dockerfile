@@ -10,6 +10,8 @@
 
 # $ DOCKER_BUILDKIT=1 docker build -t expr_llm:eval .
 
+# TODO: `expr/apps/.cache` need to be changed the permission via `chmod -R 777 .cache`
+
 FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
 
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -53,7 +55,4 @@ COPY ./scripts /expr/scripts
 
 WORKDIR /expr/apps
 
-RUN mkdir -p /.cache
-
-RUN mkdir -p /expr/apps/.cache
 
